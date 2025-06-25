@@ -8,20 +8,26 @@ format = """\
 [╭╴](238)$env_var\
 $all[╰─](238)$character"""
 
+
+
 # Change the default prompt characters
 [character]
-success_symbol = "[](238)"
-error_symbol = "[](238)"
+success_symbol ='[➜](bold green)'  #"[](238)"
+error_symbol = '[✗](bold red) ' #"[](238)"
 
 # Shows an icon that should be included by zshrc script based on the distribution or os
 #[env_var.STARSHIP_DISTRO]
 #format = '[$env_value](bold white)'  # removed space between distro and rest for pwsh
 #variable = "STARSHIP_DISTRO"
 #disabled = false
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
 
 [aws]
+format = '[$symbol($profile )(\($region\) )(\[$duration\] )]($style)'
+symbol = '󰸏 '
 disabled = true
-
 # Shows the username
 [username]
 style_user = "white bold"
@@ -36,6 +42,7 @@ format = "on [$hostname](bold green) "
 disabled = false
 
 [directory]
+style = "green"
 truncation_length = 3
 truncation_symbol = "…/"
 home_symbol = " ~"
@@ -43,6 +50,8 @@ read_only_style = "197"
 read_only = "  "
 format = "at [$path]($style)[$read_only]($read_only_style) "
 
+[golang]
+symbol = " "
 
 [git_status]
 format = '[\($all_status$ahead_behind\)]($style) '
@@ -75,9 +84,25 @@ python_binary = "python3"
 
 [nodejs]
 format = "via [ $version](bold green) "
-disabled = true
 
 [ruby]
 format = "via [ $version]($style) "
 
+[rust]
+symbol = " "
 
+[bun]
+format = '[$symbol($version )]($style)'
+symbol = '󰳮 '
+
+[c]
+format = '[$symbol($version(-$name) )]($style)'
+symbol = ' '
+
+[conda]
+format = '[$symbol$environment]($style) '
+symbol = ' '
+
+[container]
+format = '[$symbol\[$name\]]($style) '
+symbol = ' '
