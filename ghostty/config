@@ -1,0 +1,17 @@
+#background = 181825
+font-family = "MesloLGS Nerd Font Mono"
+font-size = 13.5
+
+theme=carbonfox
+
+background-opacity = 0.95
+#background-blur-radius = 70
+
+macos-titlebar-style = tabs
+macos-option-as-alt = true
+
+shell-integration-features = true
+copy-on-select = clipboard
+focus-follows-mouse = true
+link-url = true
+
