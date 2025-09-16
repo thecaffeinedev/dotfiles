@@ -1,16 +1,16 @@
+#zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/caffeinedev/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
+ZSH_THEME=""
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -24,14 +24,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -46,8 +45,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -71,11 +71,15 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-         git
-         zsh-autosuggestions
-         zsh-syntax-highlighting
+plugins=(git
+zsh-autosuggestions
+copypath
+macos
+git-prompt
+fzf
 )
+
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,6 +100,16 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
 ## Some Alias
 
 alias "home"="cd $HOME"
@@ -107,27 +121,16 @@ alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall 
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 alias deleteDSFiles='find . -name '.DS_Store' -type f -delete'
 
-
-
 ## Python- VirtualenWrapper
 # Python
-export PATH="/opt/homebrew/opt/python@3.8/bin:$PATH"
-export VIRTUALENVWRAPPER_PYTHON=/opt/homebrew/bin/python3
+
+# export PATH="/opt/homebrew/opt/python@3.8/bin:$PATH"
+# export VIRTUALENVWRAPPER_PYTHON=/opt/homebrew/opt/python@3.8/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+
 export WORKON_HOME=$HOME/.virtualenvs
 source /opt/homebrew/bin/virtualenvwrapper.sh
 
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -148,3 +151,75 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+##Android
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+
+## Rosetta-x86 configs
+alias ibrew="arch -x86_64 /usr/local/bin/brew"
+
+#golang
+export GOPATH=$HOME/go
+PATH=$PATH:$GOPATH/bin
+
+#mongodb
+alias "mongo-start"="brew services start mongodb/brew/mongodb-community"
+alias "mongo-stop"="brew services stop mongodb/brew/mongodb-community"
+
+
+# neovim
+alias vi=nvim
+
+eval "$(starship init zsh)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source /Users/caffeinedev/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+
+# cpp - links
+export CPATH=/opt/homebrew/include
+export LIBRARY_PATH=/opt/homebrew/lib
+
+
+
+# Python Poetry
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/caffeinedev/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+. "$HOME/.cargo/env"
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/caffeinedev/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+# bun completions
+[ -s "/Users/caffeinedev/.bun/_bun" ] && source "/Users/caffeinedev/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# timezsh() {
+#   shell=${1-$SHELL}
+#   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+# }
+
+#zprof
