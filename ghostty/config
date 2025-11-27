@@ -1,8 +1,11 @@
 #background = 181825
 font-family = "MesloLGS Nerd Font Mono"
-font-size = 13.5
+font-size = 14
 
-theme= Citruszest
+#theme= Citruszest
+theme = Carbonfox
+
+cursor-color = #ff7f41
 
 background-opacity = 0.95
 #background-blur-radius = 70
@@ -14,4 +17,19 @@ shell-integration-features = true
 copy-on-select = clipboard
 focus-follows-mouse = true
 link-url = true
+
+##  Clipboard  ##
+clipboard-read = "allow"
+clipboard-paste-protection = false
+mouse-scroll-multiplier = 1.1
+
+# The size of the scrollback buffer in bytes. default is 10M, we have 50M
+scrollback-limit = 52428800
+
+
+auto-update-channel = tip
+
+
+
+
 
