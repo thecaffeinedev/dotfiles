@@ -7,7 +7,12 @@ theme = Carbonfox
 
 cursor-color = #ff7f41
 
-background-opacity = 0.95
+window-height=30
+window-width=110
+
+
+
+background-opacity = 0.94
 #background-blur-radius = 70
 
 macos-titlebar-style = tabs
@@ -33,3 +38,4 @@ auto-update-channel = tip
 
 
 
+keybind = shift+enter=text:\x1b\r
