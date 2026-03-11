@@ -1,16 +1,16 @@
-#background = 181825
-font-family = "MesloLGS Nerd Font Mono"
 font-size = 14
 
 #theme= Citruszest
-theme = Carbonfox
-
+#theme = Carbonfox
+font-family = MesloLGS Nerd Font Mono
 cursor-color = #ff7f41
+theme = Dracula
 
 window-height=30
 window-width=110
 
-
+window-padding-x = 10
+window-padding-y = 10
 
 background-opacity = 0.94
 #background-blur-radius = 70
@@ -33,9 +33,6 @@ scrollback-limit = 52428800
 
 
 auto-update-channel = tip
-
-
-
 
 
 keybind = shift+enter=text:\x1b\r
