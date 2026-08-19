@@ -1,38 +1,85 @@
-font-size = 14
+# ~/.config/ghostty/config
 
-#theme= Citruszest
-#theme = Carbonfox
+## Font
 font-family = MesloLGS Nerd Font Mono
+font-size = 13.5
+font-thicken = true
+adjust-cell-height = 20%
+bold-is-bright = true
+
+## Cursor
 cursor-color = #ff7f41
-theme = Dracula
+cursor-text = #1a1a1a
+cursor-style = block
+cursor-style-blink = false
 
-window-height=30
-window-width=110
+## Theme
+theme = Raycast Dark
+minimum-contrast = 1.05
 
-window-padding-x = 10
-window-padding-y = 10
+## Selection (neutral, not theme orange)
+selection-background = #44475a
+selection-foreground = #f8f8f2
 
-background-opacity = 0.94
-#background-blur-radius = 70
-
+## Window
+window-height = 30
+window-width = 110
+window-padding-x = 14
+window-padding-y = 12
+window-padding-balance = true
 macos-titlebar-style = tabs
+macos-window-shadow = true
+
+## Splits
+unfocused-split-opacity = 0.7
+split-divider-color = #2b2b35
+
+## Transparency (frosted glass)
+background-opacity = 0.86
+background-blur = 10
+
+## macOS
 macos-option-as-alt = true
 
+## Shell integration
 shell-integration-features = true
+
+## Notifications (long-running commands)
+notify-on-command-finish = unfocused
+
+## Clipboard
 copy-on-select = clipboard
+clipboard-read = allow
+clipboard-paste-protection = false
+
+## Mouse
 focus-follows-mouse = true
+mouse-scroll-multiplier = 1.1
 link-url = true
 
-##  Clipboard  ##
-clipboard-read = "allow"
-clipboard-paste-protection = false
-mouse-scroll-multiplier = 1.1
-
-# The size of the scrollback buffer in bytes. default is 10M, we have 50M
+## Scrollback (50MB)
 scrollback-limit = 52428800
 
-
-auto-update-channel = tip
-
-
+## Keybinds
 keybind = shift+enter=text:\x1b\r
+
+# Quick terminal (drops from top)
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+quick-terminal-position = top
+quick-terminal-animation-duration = 0.15
+
+# Splits
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+keybind = cmd+ctrl+h=goto_split:left
+keybind = cmd+ctrl+l=goto_split:right
+keybind = cmd+ctrl+k=goto_split:top
+keybind = cmd+ctrl+j=goto_split:bottom
+
+# Tabs
+keybind = cmd+t=new_tab
+keybind = cmd+shift+[=previous_tab
+keybind = cmd+shift+]=next_tab
+
+# Reload config
+keybind = cmd+shift+r=reload_config
