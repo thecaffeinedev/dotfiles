@@ -1,97 +1,117 @@
-"$schema" = 'https://starship.rs/config-schema.json'
+# ~/.config/starship.toml
 
-scan_timeout = 60
+# Inserts a blank line between shell prompts
 add_newline = false
-command_timeout = 600
 
-[line_break]
-disabled = true
+# Change the default prompt format
+format = """\
+[╭╴](238)$env_var\
+$all[╰─](238)$character"""
 
-[username]
-style_user = "bold #f2f8ff"
-style_root = "bold #BF616A"
-format = "󰀵 [$user]($style) [on](dimmed white)"
-show_always = true
 
-[directory]
-format = " 󰉋 [$path]($style) "
-style = "bold #18c063"
-truncation_symbol = "…/"
-home_symbol = "~"
-read_only = " "
-read_only_style = "bold #BF616A"
+[character]
+format = '[$symbol]($style) '
+success_symbol = '[❯](bold green)'
+error_symbol = '[❯](bold red)'
+vimcmd_symbol = '[❮](bold green)'
+vimcmd_replace_one_symbol = '[❮](bold purple)'
+vimcmd_replace_symbol = '[❮](bold purple)'
+vimcmd_visual_symbol = '[❮](bold yellow)'
+
+# Shows an icon that should be included by zshrc script based on the distribution or os
+#[env_var.STARSHIP_DISTRO]
+#format = '[$env_value](bold white)'  # removed space between distro and rest for pwsh
+#variable = "STARSHIP_DISTRO"
+#disabled = false
 
 [cmd_duration]
 format = "[$duration]($style) "
+style = "yellow"
 
-[status]
-disabled = false
-format = "[$symbol $status]($style) "
-not_found_symbol = ""
-not_executable_symbol = ""
-sigint_symbol = "ﭦ"
-map_symbol = true
-
-[package]
-format = "[$symbol$version]($style) "
-symbol = "󰏓 "
+[aws]
+format = '[$symbol($profile )(\($region\) )(\[$duration\] )]($style)'
+symbol = '󰸏 '
 disabled = true
 
-[git_branch]
-format = "[$symbol$branch]($style) "
-symbol = " "
-style = "bold #f0c91c"
+# Shows the username
+[username]
+style_user = "white bold"
+style_root = "black bold"
+format = " [$user]($style) "
+disabled = false  # disable in powershell
+show_always = true
 
-[git_status]
-format = '([$all_status$ahead_behind]($style) )'
-style = "bold cyan"
+[hostname]
+ssh_only = false
+format = "on [$hostname](bold green) "
+disabled = false
 
-# Working tree
-modified = " 󰏫${count}"
-untracked = " ?${count}"
-deleted = " ${count}"
-renamed = " ${count}"
-typechanged = " 󰉺${count}"
 
-# Staged changes
-staged = " 󰐕${count}"
-
-# Special states
-conflicted = " 󰀨${count}"
-stashed = " 󰆓${count}"
-
-# Remote sync
-ahead = " ⇡${count}"
-behind = " ⇣${count}"
-diverged = " ⇕${ahead_count}/${behind_count}"
-up_to_date = ""
-
-[python]
-format = '[${symbol}(\($virtualenv\) )]($style)'
-symbol = " "
-
-[nodejs]
-format = "[$symbol($version )]($style)"
-
-[php]
-format = "[$symbol($version )]($style)"
-symbol = " "
-
-[java]
-format = "[${symbol}(${version} )]($style)"
-symbol = " "
-
-[rust]
-format = "[$symbol($version )]($style)"
+[directory]
+style = "green"
+truncation_length = 3
+truncation_symbol = "…/"
+home_symbol = "󰋜 ~"
+read_only_style = "197"
+read_only = "  "
+format = "at [$path]($style)[$read_only]($read_only_style) "
 
 [golang]
-format = "[$symbol($version )]($style)"
-symbol = " "
+symbol = " "
 
-[dart]
-format = "[$symbol($version )]($style)"
-style = "bold cyan"
-symbol = " "
+[git_status]
+format = '[\($all_status$ahead_behind\)]($style) '
+style = "bold green"
+conflicted = "🏳"
+up_to_date = " "
+untracked = " "
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+stashed = " "
+modified = " "
+staged = '[++\($count\)](green)'
+renamed = "襁 "
+deleted = " "
 
-[shell]
-disabled = true
+[terraform]
+format = "via [ terraform $version]($style) 壟 [$workspace]($style) "
+
+[docker_context]
+format = "via [ $context](bold blue) "
+
+[helm]
+format = "via [ $version](bold purple) "
+
+[python]
+symbol = " "
+python_binary = "python3"
+
+[nodejs]
+format = "via [ $version](bold green) "
+
+[ruby]
+format = "via [ $version]($style) "
+
+[rust]
+symbol = " "
+
+[bun]
+format = '[$symbol($version )]($style)'
+symbol = '󰳮 '
+
+[c]
+format = '[$symbol($version(-$name) )]($style)'
+symbol = ' '
+
+[conda]
+format = '[$symbol$environment]($style) '
+symbol = ' '
+
+[container]
+format = '[$symbol\[$name\]]($style) '
+symbol = ' '
+
+[zig]
+format = '[$symbol($version )]($style)'
+symbol = ' '
