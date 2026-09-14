@@ -8,27 +8,25 @@ command_timeout = 600
 disabled = true
 
 [username]
-style_user = "bold #F8FAFC"
-style_root = "bold #FF4D6D"
-format = "󰀵 [$user]($style) [on](dimmed #7C8599)"
+style_user = "bold #f2f8ff"
+style_root = "bold #BF616A"
+format = "󰀵 [$user]($style) [on](dimmed white)"
 show_always = true
 
 [directory]
 format = " 󰉋 [$path]($style) "
-style = "bold #FFB000"
+style = "bold #18c063"
 truncation_symbol = "…/"
 home_symbol = "~"
 read_only = " "
-read_only_style = "bold #FF4D6D"
+read_only_style = "bold #BF616A"
 
 [cmd_duration]
-format = "[󰔛 $duration]($style) "
-style = "dimmed #94A3B8"
+format = "[$duration]($style) "
 
 [status]
 disabled = false
 format = "[$symbol $status]($style) "
-style = "bold #FF4D6D"
 not_found_symbol = ""
 not_executable_symbol = ""
 sigint_symbol = "ﭦ"
@@ -42,11 +40,11 @@ disabled = true
 [git_branch]
 format = "[$symbol$branch]($style) "
 symbol = " "
-style = "bold #58A6FF"
+style = "bold #f0c91c"
 
 [git_status]
 format = '([$all_status$ahead_behind]($style) )'
-style = "bold #2DD4BF"
+style = "bold cyan"
 
 # Working tree
 modified = " 󰏫${count}"
@@ -71,34 +69,28 @@ up_to_date = ""
 [python]
 format = '[${symbol}(\($virtualenv\) )]($style)'
 symbol = " "
-style = "bold #FFD166"
 
 [nodejs]
 format = "[$symbol($version )]($style)"
-style = "bold #A3E635"
 
 [php]
 format = "[$symbol($version )]($style)"
 symbol = " "
-style = "bold #C4B5FD"
 
 [java]
 format = "[${symbol}(${version} )]($style)"
 symbol = " "
-style = "bold #FB7185"
 
 [rust]
 format = "[$symbol($version )]($style)"
-style = "bold #FB923C"
 
 [golang]
 format = "[$symbol($version )]($style)"
 symbol = " "
-style = "bold #38BDF8"
 
 [dart]
 format = "[$symbol($version )]($style)"
-style = "bold #22D3EE"
+style = "bold cyan"
 symbol = " "
 
 [shell]
