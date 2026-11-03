@@ -2,7 +2,7 @@
 
 ## Font
 font-family = MesloLGS Nerd Font Mono
-font-size = 13.5
+font-size = 14
 font-thicken = true
 adjust-cell-height = 20%
 bold-is-bright = true
@@ -14,8 +14,10 @@ cursor-style = block
 cursor-style-blink = false
 
 ## Theme
-theme = Raycast Dark
+theme = Snazzy
 minimum-contrast = 1.05
+
+title = "caffeinedev@Prabhats-MacBook-Pro:~"
 
 ## Selection (neutral, not theme orange)
 selection-background = #44475a
@@ -35,8 +37,8 @@ unfocused-split-opacity = 0.7
 split-divider-color = #2b2b35
 
 ## Transparency (frosted glass)
-background-opacity = 0.86
-background-blur = 10
+background-opacity = 0.80
+background-blur = 5
 
 ## macOS
 macos-option-as-alt = true
